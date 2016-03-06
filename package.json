@@ -1,0 +1,36 @@
+{
+  "name": "koa-http-auth",
+  "version": "0.0.1",
+  "description": "HTTP authorization middleware of koa.",
+  "main": "lib/index.js",
+  "scripts": {
+    "lint": "standard",
+    "test": "npm run lint && mocha",
+    "dev": "mocha --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gerhut/koa-http-auth.git"
+  },
+  "keywords": [
+    "koa",
+    "auth",
+    "authorization",
+    "http"
+  ],
+  "engines": {
+    "node": ">=4"
+  },
+  "author": "George Chung <Gerhut@GMail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gerhut/koa-http-auth/issues"
+  },
+  "homepage": "https://github.com/Gerhut/koa-http-auth#readme",
+  "devDependencies": {
+    "koa": "^1.2.0",
+    "mocha": "^2.4.5",
+    "standard": "^6.0.7",
+    "supertest": "^1.2.0"
+  }
+}
