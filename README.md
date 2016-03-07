@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/Gerhut/koa-http-auth.svg?branch=master)](https://travis-ci.org/Gerhut/koa-http-auth)
 [![Dependency Status](https://david-dm.org/gerhut/koa-http-auth.svg)](https://david-dm.org/gerhut/koa-http-auth)
 [![devDependency Status](https://david-dm.org/gerhut/koa-http-auth/dev-status.svg)](https://david-dm.org/gerhut/koa-http-auth#info=devDependencies)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 Simple [HTTP Authentication](https://tools.ietf.org/html/rfc2617) middleware
 of koa
