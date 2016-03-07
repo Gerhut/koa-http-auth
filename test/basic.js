@@ -13,8 +13,8 @@ describe('Basic Access Authentication', function () {
     app.use(BasicAuth('koa-http-auth'))
     app.use(function * (next) {
       if (this.request.auth &&
-        this.request.auth.userid === 'koa-http-auth.userid' &&
-        this.request.auth.password === 'koa-http-auth.password') {
+        this.request.auth.user === 'koa-http-auth.userid' &&
+        this.request.auth.password('koa-http-auth.password')) {
         yield next
       } else {
         delete this.request.auth

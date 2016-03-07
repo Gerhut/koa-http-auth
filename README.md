@@ -26,8 +26,8 @@ app.use(function * (next) {
     return // Middleware will auto give 401 response
   }
 
-  if (this.request.auth.userid !== 'user' ||
-    this.request.auth.password !== 'password') {
+  if (this.request.auth.user !== 'user' ||
+    this.request.auth.password('password')) {
     this.body = 'Invalid user.'
     delete this.request.auth // Delete request.auth ...
     return // ... will make middleware give 401 response too.
