@@ -34,6 +34,7 @@
     "koa": "^1.2.0",
     "mocha": "^2.4.5",
     "request": "^2.69.0",
+    "should": "^8.2.2",
     "standard": "^6.0.7"
   },
   "dependencies": {}
