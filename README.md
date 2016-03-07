@@ -33,6 +33,12 @@ app.use(function * (next) {
     return // ... will make middleware give 401 response too.
   }
 
+  if (this.url === '/logout') {
+    this.body = 'You are successfully logged out.'
+    delete this.request.auth // Delete request.auth unconditionally ...
+    return // ... will make user logged out.
+  }
+
   this.body = 'Welcome back!'
   yield next
 })
