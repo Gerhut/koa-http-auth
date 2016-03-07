@@ -2,14 +2,17 @@
 
 'use strict'
 
+const http = require('http')
+const should = require('should')
 const koa = require('koa')
-const supertest = require('supertest')
+const request = require('request')
 const BasicAuth = require('..').Basic
 
 describe('Basic Access Authentication', function () {
   const app = koa()
+  const server = http.createServer()
 
-  before(function () {
+  before(function (done) {
     app.use(BasicAuth('koa-http-auth'))
     app.use(function * (next) {
       if (this.request.auth &&
@@ -24,31 +27,69 @@ describe('Basic Access Authentication', function () {
     app.use(function * () {
       this.body = 'Authenticated'
     })
+
+    server.on('request', app.callback())
+    server.listen(0, done)
+  })
+
+  after(function (done) {
+    server.close(done)
   })
 
   it('should response Unauthorized without authorization', function (done) {
-    supertest(app.listen())
-      .get('/')
-      .expect(401)
-      .expect('WWW-Authenticate', 'Basic realm="koa-http-auth"')
-      .end(done)
+    request({
+      uri: {
+        protocol: 'http:',
+        hostname: '127.0.0.1',
+        port: server.address().port
+      }
+    }, (err, response, body) => {
+      if (err) return done(err)
+
+      should(response.statusCode).be.equal(401)
+      response.headers.should.have.property(
+        'www-authenticate', 'Basic realm="koa-http-auth"')
+      done()
+    })
   })
 
   it('should response Unauthorized with wrong authorization', function (done) {
-    supertest(app.listen())
-      .get('/')
-      .auth('koa-http-auth.userid', 'koa-http-auth.wrongpassword')
-      .expect(401)
-      .expect('WWW-Authenticate', 'Basic realm="koa-http-auth"')
-      .end(done)
+    request({
+      uri: {
+        protocol: 'http:',
+        hostname: '127.0.0.1',
+        port: server.address().port
+      },
+      auth: {
+        user: 'koa-http-auth.userid',
+        password: 'koa-http-auth.wrongpassword'
+      }
+    }, (err, response, body) => {
+      if (err) return done(err)
+
+      should(response.statusCode).be.equal(401)
+      response.headers.should.have.property(
+        'www-authenticate', 'Basic realm="koa-http-auth"')
+      done()
+    })
   })
 
   it('should response content with correct authorization', function (done) {
-    supertest(app.listen())
-      .get('/')
-      .auth('koa-http-auth.userid', 'koa-http-auth.password')
-      .expect(200)
-      .expect('Authenticated')
-      .end(done)
+    request({
+      uri: {
+        protocol: 'http:',
+        hostname: '127.0.0.1',
+        port: server.address().port
+      },
+      auth: {
+        user: 'koa-http-auth.userid',
+        password: 'koa-http-auth.password'
+      }
+    }, (err, response, body) => {
+      if (err) return done(err)
+
+      should(body).be.equal('Authenticated')
+      done()
+    })
   })
 })
