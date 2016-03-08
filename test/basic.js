@@ -11,6 +11,7 @@ const BasicAuth = require('..').Basic
 describe('Basic Access Authentication', function () {
   const app = koa()
   const server = http.createServer()
+  let uri
 
   before(function (done) {
     app.use(BasicAuth('koa-http-auth'))
@@ -29,7 +30,11 @@ describe('Basic Access Authentication', function () {
     })
 
     server.on('request', app.callback())
-    server.listen(0, done)
+    server.listen(0, function (err) {
+      if (err) return done(err)
+      uri = `http://127.0.0.1:${server.address().port}/`
+      done()
+    })
   })
 
   after(function (done) {
@@ -37,13 +42,7 @@ describe('Basic Access Authentication', function () {
   })
 
   it('should response Unauthorized without authorization', function (done) {
-    request({
-      uri: {
-        protocol: 'http:',
-        hostname: '127.0.0.1',
-        port: server.address().port
-      }
-    }, (err, response, body) => {
+    request(uri, (err, response, body) => {
       if (err) return done(err)
 
       should(response.statusCode).be.equal(401)
@@ -55,11 +54,7 @@ describe('Basic Access Authentication', function () {
 
   it('should response Unauthorized with wrong authorization', function (done) {
     request({
-      uri: {
-        protocol: 'http:',
-        hostname: '127.0.0.1',
-        port: server.address().port
-      },
+      uri: uri,
       auth: {
         user: 'koa-http-auth.userid',
         password: 'koa-http-auth.wrongpassword'
@@ -76,11 +71,7 @@ describe('Basic Access Authentication', function () {
 
   it('should response content with correct authorization', function (done) {
     request({
-      uri: {
-        protocol: 'http:',
-        hostname: '127.0.0.1',
-        port: server.address().port
-      },
+      uri: uri,
       auth: {
         user: 'koa-http-auth.userid',
         password: 'koa-http-auth.password'
