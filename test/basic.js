@@ -18,7 +18,7 @@ describe('Basic Access Authentication', function () {
     app.use(function * (next) {
       if (this.request.auth &&
         this.request.auth.user === 'koa-http-auth.userid' &&
-        this.request.auth.password('koa-http-auth.password')) {
+        this.request.auth.password('koa-http-auth:password')) {
         yield next
       } else {
         delete this.request.auth
@@ -74,7 +74,7 @@ describe('Basic Access Authentication', function () {
       uri: uri,
       auth: {
         user: 'koa-http-auth.userid',
-        password: 'koa-http-auth.password'
+        password: 'koa-http-auth:password'
       }
     }, (err, response, body) => {
       if (err) return done(err)
