@@ -1,6 +1,7 @@
 # koa-http-auth
 
 [![Build Status](https://travis-ci.org/Gerhut/koa-http-auth.svg?branch=master)](https://travis-ci.org/Gerhut/koa-http-auth)
+[![codecov.io](https://codecov.io/github/Gerhut/koa-http-auth/coverage.svg?branch=master)](https://codecov.io/github/Gerhut/koa-http-auth?branch=master)
 [![Dependency Status](https://david-dm.org/gerhut/koa-http-auth.svg)](https://david-dm.org/gerhut/koa-http-auth)
 [![devDependency Status](https://david-dm.org/gerhut/koa-http-auth/dev-status.svg)](https://david-dm.org/gerhut/koa-http-auth#info=devDependencies)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
