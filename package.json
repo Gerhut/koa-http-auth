@@ -33,12 +33,12 @@
     "node": ">=4"
   },
   "devDependencies": {
-    "istanbul": "^0.4.2",
-    "koa": "^1.2.0",
-    "mocha": "^2.4.5",
-    "request": "^2.69.0",
-    "should": "^8.2.2",
-    "standard": "^6.0.7"
+    "istanbul": "^0.4.5",
+    "koa": "^1.4.0",
+    "mocha": "^3.2.0",
+    "request": "^2.81.0",
+    "should": "^11.2.1",
+    "standard": "^9.0.2"
   },
   "dependencies": {}
 }
