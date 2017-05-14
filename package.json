@@ -34,11 +34,11 @@
   },
   "devDependencies": {
     "istanbul": "^0.4.5",
-    "koa": "^1.4.0",
+    "koa": "^2.2.0",
     "mocha": "^3.2.0",
     "request": "^2.81.0",
     "should": "^11.2.1",
-    "standard": "^9.0.2"
+    "standard": "^10.0.2"
   },
   "dependencies": {}
 }
