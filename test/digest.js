@@ -4,12 +4,12 @@
 
 const http = require('http')
 const should = require('should')
-const koa = require('koa')
+const Koa = require('koa')
 const request = require('request')
 const DigestAuth = require('..').Digest
 
 describe('Digest Access Authentication', function () {
-  const app = koa()
+  const app = new Koa()
   const server = http.createServer()
   let uri
 
