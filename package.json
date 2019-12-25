@@ -38,7 +38,7 @@
     "mocha": "^3.2.0",
     "request": "^2.81.0",
     "should": "^11.2.1",
-    "standard": "^9.0.2"
+    "standard": "^10.0.2"
   },
   "dependencies": {}
 }
