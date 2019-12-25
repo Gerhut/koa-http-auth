@@ -1,5 +1,7 @@
 # koa-http-auth
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Gerhut/koa-http-auth.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/Gerhut/koa-http-auth.svg?branch=master)](https://travis-ci.org/Gerhut/koa-http-auth)
 [![codecov.io](https://codecov.io/github/Gerhut/koa-http-auth/coverage.svg?branch=master)](https://codecov.io/github/Gerhut/koa-http-auth?branch=master)
 [![Dependency Status](https://david-dm.org/gerhut/koa-http-auth.svg)](https://david-dm.org/gerhut/koa-http-auth)
